@@ -10,4 +10,5 @@
  * @typedef {import('./views/sort-view.js').default} SortView
  * @typedef {import('./views/list-view.js').default} ListView
  * @typedef {import('./views/card-view.js').default} CardView
+ * @typedef {import('./views/editor-view.js').default} EditorView
  */
