@@ -4,4 +4,5 @@
 
 /**
  * @typedef {import('./views/view.js').default} View
+ * @typedef {import('./views/brief-view.js').default} BriefView
  */
