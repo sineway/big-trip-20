@@ -1,4 +1,27 @@
 {
+  "class Presenter": {
+    "scope": "javascript",
+    "prefix": "class Presenter",
+    "body": [
+      "import Presenter from './presenter.js';",
+      "",
+      "/**",
+      " * @extends {Presenter<${TM_FILENAME_BASE/(.*?)-presenter/${1:/pascalcase}/}View>}",
+      " */",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/} extends Presenter {",
+      "  /**",
+      "   * @override",
+      "   */",
+      "  createViewState() {",
+      "    // TODO: ${TM_FILENAME_BASE/(.*?)-presenter/${1:/pascalcase}/}ViewState",
+      "  }",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/};",
+      ""
+    ]
+  },
+
   "class View": {
     "scope": "javascript",
     "prefix": "class View",
