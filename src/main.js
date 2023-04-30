@@ -6,37 +6,16 @@ import './views/list-view.js';
 
 import AppModel from './models/app-model.js';
 
+import BriefPresenter from './presenters/brief-presenter.js';
+import AddPresenter from './presenters/add-presenter.js';
+import FilterPresenter from './presenters/filter-presenter.js';
+import SortPresenter from './presenters/sort-presenter.js';
+import ListPresenter from './presenters/list-presenter.js';
+
 const appModel = new AppModel();
 
-appModel.getPoints();
-
-/**
- * @type {BriefView}
- */
-const briefView = document.querySelector('brief-view');
-
-/**
- * @type {AddView}
- */
-const addView = document.querySelector('add-view');
-
-/**
- * @type {FilterView}
- */
-const filterView = document.querySelector('filter-view');
-
-/**
- * @type {SortView}
- */
-const sortView = document.querySelector('sort-view');
-
-/**
- * @type {ListView}
- */
-const listView = document.querySelector('list-view');
-
-briefView.render();
-addView.render();
-filterView.render();
-sortView.render();
-listView.render();
+new BriefPresenter(document.querySelector('brief-view'));
+new AddPresenter(document.querySelector('add-view'));
+new FilterPresenter(document.querySelector('filter-view'));
+new SortPresenter(document.querySelector('sort-view'));
+new ListPresenter(document.querySelector('list-view'), appModel);
