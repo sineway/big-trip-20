@@ -14,7 +14,24 @@
  */
 
 /**
+ * @typedef {import('./models/model.js').default} Model
+ * @typedef {import('./models/app-model.js').default} AppModel
+ */
+
+/**
  * @typedef Point
+ * @prop {string} id
+ * @prop {PointType} type
+ * @prop {string} destinationId
+ * @prop {string} startDateTime
+ * @prop {string} endDateTime
+ * @prop {number} basePrice
+ * @prop {Array<string>} offerIds
+ * @prop {boolean} isFavorite
+ */
+
+/**
+ * @typedef PointInSnakeCase
  * @prop {string} id
  * @prop {PointType} type
  * @prop {string} destination
