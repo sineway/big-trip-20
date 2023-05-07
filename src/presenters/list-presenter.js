@@ -20,7 +20,7 @@ class ListPresenter extends Presenter {
    * @param {Point} point
    * @return {PointViewState}
    */
-  createPointViewState(point, index) {
+  createPointViewState(point) {
     const offerGroups = this.model.getOfferGroups();
     const types = offerGroups.map((it) => ({
       value: it.type,
@@ -38,6 +38,11 @@ class ListPresenter extends Presenter {
       isSelected: point.offerIds.includes(it.id),
     }));
 
+    /**
+     * @type {UrlParams}
+     */
+    const urlParams = this.getUrlParams();
+
     return {
       id: point.id,
       types,
@@ -51,8 +56,29 @@ class ListPresenter extends Presenter {
       basePrice: point.basePrice,
       offers,
       isFavorite: point.isFavorite,
-      isEditable: index === 0,
+      isEditable: point.id === urlParams.edit,
     };
+  }
+
+  /**
+   * @override
+   */
+  addEventListeners() {
+    /**
+     * @param {CustomEvent & {target: CardView}} event
+     */
+    const handleViewOpen = (event) => {
+      /**
+       * @type {UrlParams}
+       */
+      const urlParams = this.getUrlParams();
+
+      urlParams.edit = event.target.state.id;
+
+      this.setUrlParams(urlParams);
+    };
+
+    this.view.addEventListener('open', handleViewOpen);
   }
 }
 
