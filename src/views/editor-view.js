@@ -4,8 +4,41 @@ import {html} from '../utils.js';
 
 /**
  * @extends {View<PointViewState>}
+ * @implements {EventListenerObject}
  */
 class EditorView extends View {
+  constructor() {
+    super();
+
+    this.addEventListener('click', this.handleClick);
+  }
+
+  /**
+   * @param {MouseEvent & {target: Element}} event
+   */
+  handleClick(event) {
+    if (event.target.closest('.event__rollup-btn')) {
+      this.notify('close');
+    }
+  }
+
+  connectedCallback() {
+    document.addEventListener('keydown', this);
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('keydown', this);
+  }
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  handleEvent(event) {
+    if (event.key === 'Escape') {
+      this.notify('close');
+    }
+  }
+
   /**
    * @override
    */
