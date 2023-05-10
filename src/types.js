@@ -26,6 +26,22 @@
  */
 
 /**
+ * @typedef FilterViewState
+ * @prop {Array<FilterItemViewState>} items
+ */
+
+/**
+ * @typedef FilterItemViewState
+ * @prop {FilterType} value
+ * @prop {boolean} isSelected
+ * @prop {boolean} isDisabled
+ */
+
+/**
+ * @typedef {'everything' | 'future' | 'present' | 'past'} FilterType
+ */
+
+/**
  * @typedef ListViewState
  * @prop {Array<PointViewState>} items
  */
