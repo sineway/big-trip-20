@@ -27,8 +27,17 @@ function formatTime(dateTime) {
  */
 function formatDuration(startDateTime, endDateTime) {
   const milliseconds = dayjs(endDateTime).diff(startDateTime);
+  const duration = dayjs.duration(milliseconds);
 
-  return dayjs.duration(milliseconds).format('HH[h] mm[m]');
+  if (duration.days()) {
+    return duration.format('DD[d] HH[h] mm[m]');
+  }
+
+  if (duration.hours()) {
+    return duration.format('HH[h] mm[m]');
+  }
+
+  return duration.format('mm[m]');
 }
 
 class SafeHtml extends String {}
