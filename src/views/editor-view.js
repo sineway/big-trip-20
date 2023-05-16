@@ -236,6 +236,12 @@ class EditorView extends View {
     `;
   }
 
+  renderTypeAndRelatedFields() {
+    this.render('.event__type-wrapper', this.createTypeFieldHtml());
+    this.render('.event__field-group--destination', this.createDestinationFieldHtml());
+    this.render('.event__section--offers', this.createOfferListFieldHtml());
+  }
+
   renderDestination() {
     this.render('.event__section--destination', this.createDestinationHtml());
   }
