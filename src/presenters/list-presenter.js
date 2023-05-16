@@ -71,6 +71,7 @@ class ListPresenter extends Presenter {
     this.view.addEventListener('open', this.handleViewOpen.bind(this));
     this.view.addEventListener('close', this.handleViewClose.bind(this));
     this.view.addEventListener('favorite', this.handleViewFavorite.bind(this));
+    this.view.addEventListener('edit', this.handleViewEdit.bind(this));
   }
 
   /**
@@ -105,6 +106,27 @@ class ListPresenter extends Presenter {
 
     point.isFavorite = !point.isFavorite;
     card.render();
+  }
+
+  /**
+   * @param {CustomEvent<HTMLInputElement> & {target: EditorView}} event
+   */
+  handleViewEdit(event) {
+    const editor = event.target;
+    const field = event.detail;
+    const point = editor.state;
+
+    switch (field.name) {
+      case 'event-destination': {
+        const name = field.value.trim();
+
+        point.destinations.forEach((it) => {
+          it.isSelected = it.name === name;
+        });
+        editor.renderDestination();
+        break;
+      }
+    }
   }
 }
 
