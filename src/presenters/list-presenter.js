@@ -216,12 +216,14 @@ class ListPresenter extends Presenter {
   /**
    * @param {CustomEvent & {target: EditorView}} event
    */
-  handleViewDelete(event) {
+  async handleViewDelete(event) {
     const editor = event.target;
     const point = editor.state;
 
     event.preventDefault();
-    this.model.deletePoint(point.id);
+    point.isDeleting = true;
+    editor.renderResetButton();
+    await this.model.deletePoint(point.id);
     this.handleViewClose();
   }
 }

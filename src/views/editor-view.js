@@ -220,7 +220,7 @@ class EditorView extends View {
     }
 
     return html`
-      <button class="event__reset-btn" type="reset">Delete</button>
+      <button ${point.isDeleting ? 'disabled' : ''} class="event__reset-btn btn" type="reset">${point.isDeleting ? 'Deleting...' : 'Delete'}</button>
     `;
   }
 
@@ -302,6 +302,10 @@ class EditorView extends View {
 
   renderSubmitButton() {
     this.render('.event__save-btn', this.createSubmitButtonHtml());
+  }
+
+  renderResetButton() {
+    this.render('.event__reset-btn', this.createResetButtonHtml());
   }
 }
 
