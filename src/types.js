@@ -104,6 +104,7 @@
  */
 
 /**
+ * @typedef {import('./services/api-service.js').default} ApiService
  * @typedef {import('./services/service.js').default} Service
  */
 
