@@ -104,6 +104,17 @@
  */
 
 /**
+ * @typedef {import('./services/service.js').default} Service
+ */
+
+/**
+ * @typedef ServiceOptions
+ * @prop {string} baseUrl
+ * @prop {number} minResponseTime
+ * @prop {string} authorization
+ */
+
+/**
  * @typedef Point
  * @prop {string} id
  * @prop {PointType} type
